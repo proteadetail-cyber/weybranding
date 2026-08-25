@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Balkan Fouche — Wey Branding</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Archivo+Black&family=Rubik+Mono+One&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0a0a0a;
+    --bone:#f1ede2;
+    --bone-dim:#e3ddca;
+    --blood:#c31f26;
+    --grey:#726d63;
+    --line: rgba(241,237,226,0.14);
+    --gothic: 'Cloister Black', 'UnifrakturMaguntia', serif;
+    --display: 'Archivo Black', 'Space Grotesk', sans-serif;
+    --body: 'Space Grotesk', sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+
+  body{
+    background:var(--ink);
+    color:var(--bone);
+    font-family:var(--body);
+    overflow-x:hidden;
+    position:relative;
+  }
+
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:999;
+    pointer-events:none;
+    opacity:0.05;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    mix-blend-mode:overlay;
+  }
+
+  a{ color:inherit; text-decoration:none; }
+  img{ max-width:100%; display:block; }
+  .wrap{ max-width:1280px; margin:0 auto; padding:0 32px; }
+
+  ::selection{ background:var(--blood); color:var(--bone); }
+  :focus-visible{ outline:2px solid var(--blood); outline-offset:3px; }
+
+  header{
+    position:fixed;
+    top:0; left:0; right:0;
+    z-index:100;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:22px 32px;
+    background:linear-gradient(to bottom, rgba(10,10,10,0.92), rgba(10,10,10,0));
+    backdrop-filter:blur(2px);
+  }
+
+  .logo-mark{
+    font-family:'Rubik Mono One', 'UnifrakturMaguntia', serif;
+    font-size:30px;
+    letter-spacing:-0.1em;
+    line-height:1;
+    font-weight:400;
+    background:transparent;
+    border:0;
+    padding:0;
+    color:inherit;
+    cursor:pointer;
+    position:relative;
+  }
+
+  nav.links{
+    display:flex;
+    align-items:center;
+    gap:36px;
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+  }
+
+  nav.links a{ position:relative; padding-bottom:3px; }
+  nav.links a::after{
+    content:"";
+    position:absolute;
+    left:0; right:100%;
+    bottom:0;
+    height:1px;
+    background:var(--blood);
+    transition:right .25s ease;
+  }
+  nav.links a:hover::after{ right:0; }
+
+  .nav-cta{
+    border:1px solid var(--bone);
+    padding:9px 16px;
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    transition:background .2s ease, color .2s ease;
+  }
+  .nav-cta:hover{ background:var(--bone); color:var(--ink); }
+
+  .proj-head{
+    padding:160px 0 60px;
+    border-bottom:1px solid var(--line);
+  }
+  .proj-back{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:0.15em;
+    text-transform:uppercase;
+    color:var(--grey);
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    margin-bottom:40px;
+    transition:color .2s ease;
+  }
+  .proj-back:hover{ color:var(--blood); }
+  .proj-back span{ transition:transform .2s ease; display:inline-block; }
+  .proj-back:hover span{ transform:translateX(-4px); }
+
+  .proj-num{
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--blood);
+    letter-spacing:0.15em;
+    margin-bottom:18px;
+  }
+  .proj-title{
+    font-family:var(--display);
+    font-size:clamp(48px, 9vw, 130px);
+    line-height:0.95;
+    text-transform:uppercase;
+  }
+  .proj-tagline{
+    font-family:var(--body);
+    font-size:clamp(16px, 1.8vw, 20px);
+    color:var(--grey);
+    margin-top:24px;
+    max-width:560px;
+    line-height:1.5;
+  }
+
+  .proj-meta{
+    display:flex;
+    gap:56px;
+    flex-wrap:wrap;
+    padding:36px 0;
+    margin-top:48px;
+    border-top:1px solid var(--line);
+  }
+  .proj-meta-item .k{
+    font-family:var(--mono);
+    font-size:10px;
+    letter-spacing:0.15em;
+    text-transform:uppercase;
+    color:var(--grey);
+    margin-bottom:8px;
+  }
+  .proj-meta-item .v{
+    font-family:var(--display);
+    font-size:18px;
+    text-transform:uppercase;
+  }
+
+  .proj-body{
+    padding:80px 0;
+    display:grid;
+    grid-template-columns:1fr 1.4fr;
+    gap:64px;
+  }
+  .proj-body h3{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:var(--blood);
+    margin-bottom:20px;
+  }
+  .proj-body p{
+    color:var(--bone-dim);
+    font-size:16px;
+    line-height:1.75;
+    margin-bottom:18px;
+    max-width:520px;
+  }
+
+  .proj-gallery{
+    padding:0 0 80px;
+  }
+  .ph{
+    width:100%;
+    aspect-ratio:16/9;
+    background:repeating-linear-gradient(45deg, #131313 0 12px, #0d0d0d 12px 24px);
+    border:1px solid var(--line);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:var(--grey);
+    margin-bottom:24px;
+  }
+
+  .proj-next{
+    border-top:1px solid var(--line);
+    padding:80px 0;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:24px;
+  }
+  .proj-next-label{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:var(--grey);
+    margin-bottom:8px;
+  }
+  .proj-next-name{
+    font-family:var(--display);
+    font-size:clamp(28px, 4vw, 44px);
+    text-transform:uppercase;
+    transition:color .2s ease;
+  }
+  .proj-next:hover .proj-next-name{ color:var(--blood); }
+  .proj-next:hover .proj-next-arrow span{ transform:translate(4px,-4px); }
+  .proj-next-arrow{
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--grey);
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+  }
+  .proj-next-arrow span{
+    display:inline-block;
+    transition:transform .2s ease;
+  }
+
+  footer{ padding:60px 0 36px; }
+  .footer-bottom{
+    display:flex;
+    justify-content:space-between;
+    padding-top:28px;
+    font-family:var(--mono);
+    font-size:11px;
+    color:var(--grey);
+    letter-spacing:0.04em;
+    flex-wrap:wrap;
+    gap:12px;
+    border-top:1px solid var(--line);
+  }
+
+  .loader{
+    position:fixed;
+    inset:0;
+    z-index:10000;
+    background:var(--ink);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:42px;
+    transition:opacity .5s ease, visibility .5s ease;
+  }
+  .loader.hide{ opacity:0; visibility:hidden; pointer-events:none; }
+  .loader-mark{
+    font-family:var(--gothic);
+    font-size:clamp(80px,16vw,180px);
+    line-height:1;
+    color:var(--bone);
+    letter-spacing:2px;
+  }
+  .loader-bar{
+    width:min(320px,60vw);
+    height:2px;
+    background:rgba(241,237,226,0.14);
+    position:relative;
+    overflow:hidden;
+  }
+  .loader-fill{ height:100%; width:0%; background:var(--bone); transform-origin:left center; }
+  .loader-pct{
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:0.2em;
+    color:var(--grey);
+    transition:color .15s ease;
+  }
+
+  @media (max-width: 860px){
+    nav.links{ display:none; }
+    .proj-body{ grid-template-columns:1fr; gap:36px; }
+  }
+  @media (max-width: 520px){
+    .wrap{ padding:0 20px; }
+    header{ padding:18px 20px; }
+    .proj-head{ padding-top:130px; }
+    .proj-meta{ gap:32px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader-mark">WEY</div>
+  <div class="loader-bar"><div class="loader-fill" id="loaderFill"></div></div>
+  <div class="loader-pct" id="loaderPct">00%</div>
+</div>
+
+<header>
+  <a href="weybrandweb.html" class="logo-mark">WEY</a>
+  <nav class="links">
+    <a href="weybrandweb.html#services">Services</a>
+    <a href="weybrandweb.html#work">Work</a>
+    <a href="weybrandweb.html#process">Process</a>
+    <a href="weybrandweb.html#contact" class="nav-cta">Start a project</a>
+  </nav>
+</header>
+
+<section class="proj-head">
+  <div class="wrap">
+    <a href="weybrandweb.html#work" class="proj-back"><span>←</span> Back to work</a>
+    <div class="proj-num">02 / Branding &amp; Identity</div>
+    <h1 class="proj-title">Balkan Fouche</h1>
+    <p class="proj-tagline">A luxury perfume brand concept, built around restraint and material quality.</p>
+
+    <div class="proj-meta">
+      <div class="proj-meta-item"><div class="k">Year</div><div class="v">2026</div></div>
+      <div class="proj-meta-item"><div class="k">Timeframe</div><div class="v">17 days</div></div>
+      <div class="proj-meta-item"><div class="k">Tools</div><div class="v">Procreate</div></div>
+      <div class="proj-meta-item"><div class="k">Category</div><div class="v">Branding &amp; Identity</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap proj-body">
+  <div>
+    <h3>The Problem</h3>
+    <p>Smelling good and wearing perfumes is expensive. Most fine fragrance sits behind an unattainable price tag, locking out the audience that would actually enjoy it.</p>
+  </div>
+  <div>
+    <h3>The Solution</h3>
+    <p>Balkan Fouche offers refined perfumery at an accessible price — a fragrance brand inspired by mountainous landscapes, crisp air and untouched wilderness. The identity is grounded and refined, translating raw natural beauty into elegant bottles.</p>
+    <p>Each scent is crafted to evoke emotion and presence — bold or subtle — designed to leave a memorable trace, like a signature on the skin. Identity over status. A piece of the mountains in every spray.</p>
+  </div>
+</section>
+
+<section class="wrap proj-gallery">
+  <div class="ph">Image 01 — Hero</div>
+  <div class="ph">Image 02 — Logo lockup</div>
+  <div class="ph">Image 03 — Bottle</div>
+  <div class="ph">Image 04 — Packaging</div>
+  <div class="ph">Image 05 — Brand application</div>
+</section>
+
+<a href="work-oandi.html" class="wrap proj-next">
+  <div>
+    <div class="proj-next-label">Next project</div>
+    <div class="proj-next-name">Oak &amp; Ivory</div>
+  </div>
+  <div class="proj-next-arrow">View project <span>↗</span></div>
+</a>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-bottom">
+      <span>© 2026 Wey Branding. All rights reserved.</span>
+      <span>Marked in South Africa</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    const loader = document.getElementById('loader');
+    const fill = document.getElementById('loaderFill');
+    const pct = document.getElementById('loaderPct');
+    if(!loader || !fill || !pct) return;
+
+    const duration = 1000;
+    const start = performance.now();
+    let lastPct = -1;
+
+    function tick(now){
+      const t = Math.min(1, (now - start) / duration);
+      const current = Math.floor(t * 100);
+      fill.style.width = (t * 100) + '%';
+
+      if(current !== lastPct){
+        pct.style.color = 'var(--blood)';
+        setTimeout(() => { pct.style.color = ''; }, 90);
+        pct.textContent = (current < 10 ? '0' : '') + current + '%';
+        lastPct = current;
+      }
+
+      if(t < 1){
+        requestAnimationFrame(tick);
+      } else {
+        pct.style.color = 'var(--blood)';
+        pct.textContent = '100%';
+        fill.style.width = '100%';
+        setTimeout(() => {
+          loader.classList.add('hide');
+          loader.setAttribute('aria-hidden', 'true');
+        }, 220);
+      }
+    }
+    requestAnimationFrame(tick);
+  })();
+</script>
+
+</body>
+</html>

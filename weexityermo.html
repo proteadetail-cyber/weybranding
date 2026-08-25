@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WE EXIT YERMO — Wey Branding</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Archivo+Black&family=Rubik+Mono+One&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Special+Elite&family=Bungee&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0a0a0a;
+    --bone:#f1ede2;
+    --bone-dim:#e3ddca;
+    --sand:#c9b48a;
+    --sand-deep:#a8916a;
+    --sand-dim:#8a7553;
+    --blood:#c31f26;
+    --line-dark: rgba(10,10,10,0.18);
+    --gothic: 'Cloister Black', 'UnifrakturMaguntia', serif;
+    --display: 'Archivo Black', 'Space Grotesk', sans-serif;
+    --body: 'Space Grotesk', sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    background:var(--sand);
+    color:var(--ink);
+    font-family:var(--body);
+    overflow-x:hidden;
+    position:relative;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+  }
+
+  /* subtle grain */
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:999;
+    pointer-events:none;
+    opacity:0.08;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    mix-blend-mode:multiply;
+  }
+
+  a{ color:inherit; text-decoration:none; }
+
+  .wrap{ max-width:1280px; margin:0 auto; padding:0 32px; width:100%; }
+
+  /* ---------- Nav ---------- */
+  header{
+    position:relative;
+    z-index:50;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:22px 32px;
+    border-bottom:1px solid var(--line-dark);
+  }
+  .logo-mark{
+    font-family:'Rubik Mono One', 'UnifrakturMaguntia', serif;
+    font-size:30px;
+    letter-spacing:-0.1em;
+    line-height:1;
+    color:var(--ink);
+  }
+  nav.links{
+    display:flex;
+    align-items:center;
+    gap:36px;
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+  }
+  nav.links a{
+    position:relative;
+    padding-bottom:3px;
+    color:var(--ink);
+  }
+  nav.links a::after{
+    content:"";
+    position:absolute;
+    left:0; right:100%;
+    bottom:0;
+    height:1px;
+    background:var(--blood);
+    transition:right .25s ease;
+  }
+  nav.links a:hover::after{ right:0; }
+  .nav-cta{
+    border:1px solid var(--ink);
+    padding:9px 16px;
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    transition:background .2s ease, color .2s ease;
+  }
+  .nav-cta:hover{ background:var(--ink); color:var(--sand); }
+
+  /* ---------- Main stage ---------- */
+  main{
+    flex:1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:80px 24px;
+    text-align:center;
+    position:relative;
+  }
+  .exit-mark{
+    font-family:var(--gothic);
+    font-size:clamp(80px, 18vw, 240px);
+    line-height:0.9;
+    color:var(--ink);
+    letter-spacing:2px;
+    text-transform:uppercase;
+  }
+  .exit-mark span{
+    display:block;
+  }
+  .exit-mark .line2{
+    color:var(--sand-dim);
+  }
+  .exit-eyebrow{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:0.25em;
+    text-transform:uppercase;
+    color:var(--sand-dim);
+    margin-bottom:28px;
+    display:block;
+  }
+  .exit-rule{
+    width:64px;
+    height:1px;
+    background:var(--ink);
+    margin:36px auto 0;
+    opacity:0.5;
+  }
+
+  /* ---------- Landscape under title ---------- */
+  .landscape-box{
+    position:relative;
+    width:100%;
+    max-width:720px;
+    height:48px;
+    margin:48px auto 0;
+    overflow:hidden;
+  }
+  .exit-landscape{
+    display:block;
+    width:100%;
+    height:100%;
+    color:var(--ink);
+    opacity:0.75;
+  }
+
+  .tumbleweed{
+    position:absolute;
+    left:0;
+    bottom:8px;
+    width:18px;
+    height:18px;
+    color:var(--ink);
+    opacity:0;
+    animation:tumbleweed-roll 5.5s linear 0.3s forwards;
+  }
+  @keyframes tumbleweed-roll{
+    0%{ transform:translate(-30px, 0px) rotate(0deg); opacity:0; }
+    6%{ opacity:0.85; }
+    78%{ transform:translate(560px, 0px) rotate(1800deg); opacity:0.85; }
+    86%{ transform:translate(610px, 2px) rotate(2100deg); opacity:0.85; } /* tiny hop */
+    92%{ transform:translate(640px, 0px) rotate(2300deg); opacity:0.85; } /* land */
+    100%{ transform:translate(720px, 0px) rotate(2700deg); opacity:0; }
+  }
+
+  .yermo-section{
+    max-width:720px;
+    margin:28px auto 0;
+    text-align:left;
+    border-top:1px solid var(--line-dark);
+    padding-top:18px;
+  }
+  .yermo-line{
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-bottom:18px;
+  }
+  .yermo-label,
+  .yermo-question{
+    font-family: 'Special Elite', 'Georgia', serif;
+    font-size:11px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    font-weight:700;
+    line-height:1.4;
+  }
+  .yermo-label{
+    color:var(--sand-dim);
+  }
+  .yermo-question{
+    color:var(--ink);
+  }
+  .yermo-copy{
+    display:grid;
+    gap:12px;
+  }
+  .yermo-copy p{
+    font-family:var(--body);
+    font-size:15px;
+    line-height:1.7;
+    color:var(--ink);
+    opacity:0.82;
+    margin:0;
+  }
+
+  .team-heading{
+    max-width:720px;
+    margin:42px auto 0;
+    border-top:1px solid var(--line-dark);
+    padding-top:18px;
+  }
+  .team-heading h2{
+    font-family:'Special Elite', 'Georgia', serif;
+    font-size:11px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    font-weight:700;
+    line-height:1.4;
+    color:var(--ink);
+  }
+  .team-frame{
+    max-width:720px;
+    margin:18px auto 0;
+    padding:22px;
+    border:1px solid var(--line-dark);
+    background:rgba(255,255,255,0.12);
+  }
+  .team-blocks{
+    display:grid;
+    grid-template-columns:repeat(3, minmax(0, 1fr));
+    gap:36px;
+  }
+  .team-member{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+  .team-cap{
+    width:42%;
+    height:18px;
+    margin:0 auto;
+    border:1px solid rgba(10,10,10,0.48);
+    background:linear-gradient(180deg, #b98a55 0%, #81522c 100%);
+    box-shadow:inset 0 2px 0 rgba(255,216,158,0.22), inset 0 -2px 0 rgba(43,21,8,0.2);
+  }
+  .team-member:first-child .team-cap{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#fff0c5;
+    font-family:var(--mono);
+    font-size:8px;
+    letter-spacing:0.12em;
+    line-height:1;
+    text-shadow:0 1px 1px rgba(43,21,8,0.65);
+  }
+  .team-member:nth-child(2) .team-cap,
+  .team-member:nth-child(2) .team-plank{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#fff0c5;
+    font-family:var(--mono);
+    font-size:9px;
+    letter-spacing:0.1em;
+    line-height:1;
+    text-shadow:0 1px 1px rgba(43,21,8,0.65);
+  }
+  .team-member:nth-child(3) .team-cap,
+  .team-member:nth-child(3) .team-plank{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#ffffff;
+    font-family:var(--mono);
+    font-size:9px;
+    letter-spacing:0.1em;
+    line-height:1;
+    text-shadow:0 1px 1px rgba(43,21,8,0.65);
+  }
+  .team-question-mark{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:100%;
+    height:100%;
+    color:#a87845;
+    font-family:var(--display);
+    font-size:clamp(54px, 9vw, 88px);
+    line-height:1;
+    text-shadow:
+      2px 3px 0 #61381d,
+      4px 5px 0 rgba(43,21,8,0.18);
+    background:linear-gradient(180deg, #c4935d 0%, #81522c 52%, #61381d 100%);
+    -webkit-background-clip:text;
+            background-clip:text;
+    -webkit-text-fill-color:transparent;
+  }
+  .team-member:first-child .team-block{
+    position:relative;
+    overflow:hidden;
+    border:4px double #a8752e;
+    box-shadow:
+      0 0 0 3px #5d3b18,
+      0 0 0 5px #c59a50,
+      inset 0 0 0 3px rgba(255,220,143,0.48),
+      0 8px 14px rgba(64,34,10,0.22);
+  }
+  .team-member:first-child .team-block::before{
+    content:"";
+    position:absolute;
+    z-index:2;
+    inset:8px;
+    border:1px solid rgba(255,218,137,0.72);
+    pointer-events:none;
+  }
+  .team-member:first-child .team-block::after{
+    content:"✦";
+    position:absolute;
+    z-index:3;
+    top:5px;
+    left:50%;
+    transform:translateX(-50%);
+    color:#f0c96b;
+    font-size:14px;
+    line-height:1;
+    text-shadow:0 1px 1px #4c2f12;
+    pointer-events:none;
+  }
+  .team-block{
+    position:relative;
+    display:flex;
+    align-items:flex-end;
+    justify-content:center;
+    aspect-ratio:3 / 4;
+    border:1px solid rgba(10,10,10,0.42);
+    background:
+      linear-gradient(135deg, rgba(255,255,255,0.2), transparent 55%),
+      rgba(10,10,10,0.04);
+    box-shadow:inset 0 0 0 4px rgba(255,255,255,0.1);
+  }
+  .team-figure{
+    position:relative;
+    z-index:0;
+    width:72%;
+    height:78%;
+  }
+  .team-member:nth-child(2) .team-figure{
+    width:62%;
+    height:70%;
+  }
+  .team-member:nth-child(2) .team-head{
+    border-radius:12%;
+    background:linear-gradient(135deg, #d1d1ca 0%, #858781 52%, #4d504d 100%);
+    border:2px solid #3e413e;
+    box-shadow:inset -5px -4px 0 rgba(20,24,22,0.2), inset 4px 4px 0 rgba(255,255,255,0.24);
+  }
+  .team-member:nth-child(2) .team-neck{
+    background:#747873;
+    border-left:2px solid #3e413e;
+    border-right:2px solid #3e413e;
+  }
+  .team-member:nth-child(2) .team-body{
+    border-radius:14% 14% 8% 8%;
+    background:
+      linear-gradient(90deg, transparent 46%, rgba(237,239,230,0.28) 47%, transparent 49%),
+      linear-gradient(180deg, #b8bbb3 0%, #777b76 55%, #4b4e4a 100%);
+    border:2px solid #3e413e;
+    box-shadow:inset 5px 0 0 rgba(255,255,255,0.14), inset -5px 0 0 rgba(20,24,22,0.18);
+  }
+  .team-head{
+    position:absolute;
+    top:15%;
+    left:50%;
+    width:42%;
+    aspect-ratio:1;
+    transform:translateX(-50%);
+    border-radius:48% 52% 50% 50%;
+    background:#c98c61;
+    box-shadow:inset -5px -4px 0 rgba(105,55,32,0.12);
+  }
+  .team-hat{
+    position:absolute;
+    z-index:2;
+    top:1%;
+    left:50%;
+    width:68%;
+    height:24%;
+    transform:translateX(-50%);
+  }
+  .team-hat::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:24%;
+    width:52%;
+    height:76%;
+    border-radius:45% 45% 18% 18%;
+    background:linear-gradient(100deg, #5a321d 0%, #8a5630 50%, #4a2918 100%);
+    box-shadow:inset 0 3px 0 rgba(227,176,105,0.2);
+  }
+  .team-hat::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:0;
+    width:100%;
+    height:34%;
+    border-radius:50%;
+    background:linear-gradient(180deg, #8a5630 0%, #4a2918 100%);
+    box-shadow:0 2px 0 rgba(35,17,8,0.35);
+  }
+  .team-member:nth-child(2) .team-hat{
+    top:-3%;
+  }
+  .team-neck{
+    position:absolute;
+    top:43%;
+    left:50%;
+    width:15%;
+    height:13%;
+    transform:translateX(-50%);
+    background:#c98c61;
+  }
+  .team-body{
+    position:absolute;
+    bottom:0;
+    left:50%;
+    width:82%;
+    height:55%;
+    transform:translateX(-50%);
+    border-radius:48% 48% 8% 8%;
+    background:#754735;
+    box-shadow:inset 0 8px 0 rgba(255,225,184,0.1);
+  }
+  .team-plank{
+    min-height:42px;
+    border:1px solid rgba(10,10,10,0.48);
+    background:
+      linear-gradient(165deg, transparent 24%, rgba(255,255,255,0.16) 25%, transparent 27%),
+      linear-gradient(8deg, transparent 46%, rgba(40,20,8,0.18) 47%, transparent 49%),
+      linear-gradient(180deg, #a87845 0%, #81522c 52%, #61381d 100%);
+    box-shadow:inset 0 2px 0 rgba(255,216,158,0.22), inset 0 -3px 0 rgba(43,21,8,0.2);
+  }
+  .team-member:first-child .team-plank{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#fff0c5;
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:0.14em;
+    text-shadow:0 1px 1px rgba(43,21,8,0.65);
+  }
+
+  /* ---------- Footer ---------- */
+  footer{
+    padding:36px 0 28px;
+    border-top:1px solid var(--line-dark);
+  }
+  .footer-bottom{
+    display:flex;
+    justify-content:space-between;
+    font-family:var(--mono);
+    font-size:11px;
+    color:var(--sand-dim);
+    letter-spacing:0.04em;
+    flex-wrap:wrap;
+    gap:12px;
+  }
+
+  @media (max-width: 600px){
+    .wrap{ padding:0 20px; }
+    header{ padding:18px 20px; }
+    nav.links{ display:none; }
+    .exit-rule{ margin-top:28px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="weybrandweb.html" class="logo-mark">WEY</a>
+  <nav class="links">
+    <a href="weybrandweb.html#services">Services</a>
+    <a href="weybrandweb.html#work">Work</a>
+    <a href="weybrandweb.html#process">Process</a>
+    <a href="weybrandweb.html#pricing">Pricing</a>
+    <a href="weybrandweb.html#contact" class="nav-cta">Start a project</a>
+  </nav>
+</header>
+
+<main>
+  <div>
+    <span class="exit-eyebrow">A Wey Production</span>
+    <h1 class="exit-mark">
+      <span>WE EXIT</span>
+      <span class="line2">YERMO</span>
+    </h1>
+    <span class="exit-rule"></span>
+    <div class="landscape-box">
+      <svg class="exit-landscape" viewBox="0 0 720 48" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- distant mountains -->
+        <polyline points="0,32 70,22 140,30 220,18 300,28 380,20 460,30 540,22 620,32 720,24"
+                  fill="none" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+        <!-- foreground horizon -->
+        <line x1="0" y1="40" x2="720" y2="40" stroke="currentColor" stroke-width="1" opacity="0.85"/>
+        <!-- ground tick marks -->
+        <line x1="0" y1="44" x2="720" y2="44" stroke="currentColor" stroke-width="0.5" opacity="0.35"/>
+      </svg>
+      <svg class="tumbleweed" viewBox="0 0 24 24" aria-hidden="true">
+        <g fill="none" stroke="currentColor" stroke-width="0.9" stroke-linecap="round">
+          <circle cx="12" cy="12" r="9" opacity="0.55"/>
+          <path d="M3 12 Q8 6 12 12 T21 12" opacity="0.7"/>
+          <path d="M12 3 Q18 8 12 12 T12 21" opacity="0.7"/>
+          <path d="M5 7 Q12 12 19 17" opacity="0.5"/>
+          <path d="M19 7 Q12 12 5 17" opacity="0.5"/>
+          <path d="M3 9 L21 15" opacity="0.4"/>
+          <path d="M3 15 L21 9" opacity="0.4"/>
+        </g>
+      </svg>
+    </div>
+
+    <section class="yermo-section" aria-label="What is YERMO">
+      <div class="yermo-line">
+        <span class="yermo-label">What is</span>
+        <h2 class="yermo-question">YERMO?</h2>
+      </div>
+      <div class="yermo-copy">
+        <p>YERMO means “wasteland” in Spanish, a fitting name for a brand that exists to replace empty, forgettable visual territory with clarity, character, and momentum.</p>
+        <p>WEY branding doesn’t just polish a weak website. It clears the dead space. Boring brands often sit in a beige wasteland of generic layouts, vague messaging, and safe design choices. WEY brings strategy, contrast, and sharp identity systems that make a business feel alive the moment it lands on the page.</p>
+        <p>When a website looks bland, people assume the business is bland. WEY fixes that by turning unclear positioning into a memorable visual language, building trust quickly, and giving the brand a reason to be remembered. The result is not decoration. It is a stronger first impression, a clearer story, and a significantly better chance of winning attention, clients, and long-term brand equity.</p>
+      </div>
+    </section>
+
+    <section class="team-heading" aria-label="Our team">
+      <h2>Our team</h2>
+    </section>
+    <div class="team-frame" aria-label="Our team members">
+      <div class="team-blocks">
+        <div class="team-member">
+          <div class="team-cap">CEO</div>
+          <div class="team-block" aria-label="Jordan portrait">
+            <div class="team-figure" aria-hidden="true">
+              <div class="team-hat"></div>
+              <div class="team-head"></div>
+              <div class="team-neck"></div>
+              <div class="team-body"></div>
+            </div>
+          </div>
+          <div class="team-plank">JORDAN</div>
+        </div>
+        <div class="team-member">
+          <div class="team-cap">DESIGNER</div>
+          <div class="team-block" aria-label="Team member portrait">
+            <div class="team-figure" aria-hidden="true">
+              <div class="team-hat"></div>
+              <div class="team-head"></div>
+              <div class="team-neck"></div>
+              <div class="team-body"></div>
+            </div>
+          </div>
+          <div class="team-plank">JORDAN.EXE</div>
+        </div>
+        <div class="team-member">
+          <div class="team-cap">???</div>
+          <div class="team-block" aria-label="Available team position">
+            <span class="team-question-mark">?</span>
+          </div>
+          <div class="team-plank">MYSTERY</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-bottom">
+      <span>© 2026 Wey Branding. All rights reserved.</span>
+      <span>Marked in South Africa</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
