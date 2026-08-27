@@ -3,10 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
 <title>Wey Branding | Branding, Design & Websites</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Archivo+Black&family=Rubik+Mono+One&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;600;700&family=UnifrakturMaguntia&family=Archivo+Black&family=Rubik+Mono+One&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
     --ink:#0a0a0a;
@@ -818,7 +819,7 @@
   /* ---------- Pricing ---------- */
   .pricing-grid{
     display:grid;
-    grid-template-columns:repeat(2, minmax(0, 1fr));
+    grid-template-columns:repeat(3, minmax(0, 1fr));
     gap:18px;
     margin-top:48px;
   }
@@ -836,6 +837,42 @@
     overflow:hidden;
   }
   .price-card:hover{ transform:translateY(-4px); border-color:var(--blood); }
+  .price-card.empty > *,
+  .price-card.empty::before,
+  .price-card.empty::after{ display:none; }
+  .price-card.empty > .price-name-gothic{ display:block; }
+  .price-card.empty > .price-name-pixel{ display:block; }
+  .price-card.empty > .price-lines{ display:block; }
+  
+  body:has(.price-card:hover) > * {
+    opacity: 0.1;
+    pointer-events: none;
+    transition: opacity .25s ease;
+  }
+  body:has(.price-card:hover) #pricing {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  body:has(.price-card:hover) .price-card:not(:hover) {
+    opacity: 0.1;
+  }
+  body:has(.price-card:hover) .price-card:hover {
+    opacity: 1;
+  }
+  
+  .price-name-gothic{
+    font-family:var(--gothic);
+    font-size:clamp(38px, 5vw, 64px);
+    font-weight:400;
+    letter-spacing:0;
+  }
+  .price-name-pixel{
+    font-family:'Pixelify Sans', sans-serif;
+    font-size:clamp(32px, 4.5vw, 58px);
+    font-weight:600;
+    letter-spacing:0;
+    transform:translateY(-8px);
+  }
 
   .price-eyebrow{
     font-family:var(--mono);
@@ -1103,6 +1140,7 @@
 
   @media (max-width: 1100px){
     .pricing-grid{ grid-template-columns:repeat(2, 1fr); }
+    .pricing-grid .price-card:nth-child(3){ grid-column:span 2; }
   }
 
   /* ---------- Pricing Modal ---------- */
@@ -1271,6 +1309,7 @@
   body.modal-open{ overflow:hidden; }
   @media (max-width: 600px){
     .pricing-grid{ grid-template-columns:1fr; }
+    .pricing-grid .price-card:nth-child(3){ grid-column:auto; }
     .price-card{ min-height:auto; }
   }
 
@@ -1634,7 +1673,7 @@
     <a href="#services">Services</a>
     <a href="work.html" target="_blank" rel="noopener">Work</a>
     <a href="#process">Process</a>
-    <a href="#pricing">Pricing</a>
+    <a href="#pricing">Packages</a>
     <a href="#contact" class="nav-cta">Start a project</a>
   </nav>
 </header>
@@ -1806,90 +1845,32 @@
 
     <div class="pricing-grid">
 
-      <div class="price-card platinum">
-        <span class="price-eyebrow">Branding</span>
-        <h3 class="price-name">Platinum</h3>
-        <span class="price-divider"></span>
-        <span class="price-start">Starts at</span>
-        <span class="price-value">R500</span>
-        <a href="#contact" class="price-cta">Scope</a>
+      <div class="price-card platinum empty">
+        <h3 class="price-name-gothic">BRANDING</h3>
+        <div class="price-lines">
+          <div>Full Brand identity</div>
+          <div>Logo design</div>
+          <div>Brand Refresh</div>
+          <div>Rebranding</div>
+          <div>Brand Guidelines</div>
+        </div>
       </div>
 
-      <div class="price-card crystal">
-        <span class="crystal-glow"></span>
-        <div class="crystal-cluster" aria-hidden="true">
-          <svg viewBox="0 0 400 140" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="crystalFace" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#e8eeff"/>
-                <stop offset="50%" stop-color="#a8b8e0"/>
-                <stop offset="100%" stop-color="#5a6a8a"/>
-              </linearGradient>
-              <linearGradient id="crystalFaceSide" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0%" stop-color="#7a8aa8"/>
-                <stop offset="60%" stop-color="#c8d4f0"/>
-                <stop offset="100%" stop-color="#e8eeff"/>
-              </linearGradient>
-              <linearGradient id="crystalEdge" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#ffffff"/>
-                <stop offset="100%" stop-color="#a8b8d8"/>
-              </linearGradient>
-              <linearGradient id="crystalShadow" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#3a4055"/>
-                <stop offset="100%" stop-color="#1a1e2a"/>
-              </linearGradient>
-            </defs>
-
-            <polygon points="20,140 50,140 35,40" fill="url(#crystalShadow)" opacity="0.55"/>
-            <polygon points="20,140 35,40 5,90" fill="#1a1e2a" opacity="0.7"/>
-
-            <polygon points="55,140 95,140 75,15 50,70" fill="url(#crystalFace)"/>
-            <polygon points="55,140 50,70 75,15" fill="url(#crystalFaceSide)" opacity="0.85"/>
-            <polygon points="75,15 95,140 90,140" fill="#5a6a8a" opacity="0.45"/>
-            <polygon points="75,15 50,70 35,40" fill="url(#crystalEdge)" opacity="0.8"/>
-
-            <polygon points="105,140 135,140 120,50" fill="url(#crystalFace)"/>
-            <polygon points="105,140 120,50 95,85" fill="url(#crystalFaceSide)" opacity="0.75"/>
-
-            <polygon points="150,140 195,140 180,8 145,55" fill="url(#crystalFace)"/>
-            <polygon points="150,140 145,55 180,8" fill="url(#crystalFaceSide)" opacity="0.9"/>
-            <polygon points="180,8 195,140 188,140" fill="#5a6a8a" opacity="0.4"/>
-            <polygon points="180,8 145,55 120,50" fill="url(#crystalEdge)" opacity="0.7"/>
-            <polygon points="180,8 165,40 195,50 180,8" fill="#ffffff" opacity="0.4"/>
-
-            <polygon points="210,140 245,140 225,30" fill="url(#crystalFace)"/>
-            <polygon points="210,140 225,30 200,70" fill="url(#crystalFaceSide)" opacity="0.8"/>
-            <polygon points="225,30 200,70 180,8" fill="url(#crystalEdge)" opacity="0.6"/>
-
-            <polygon points="260,140 300,140 285,12 250,60" fill="url(#crystalFace)"/>
-            <polygon points="260,140 250,60 285,12" fill="url(#crystalFaceSide)" opacity="0.85"/>
-            <polygon points="285,12 300,140 295,140" fill="#5a6a8a" opacity="0.4"/>
-            <polygon points="285,12 250,60 225,30" fill="url(#crystalEdge)" opacity="0.6"/>
-            <polygon points="285,12 270,40 300,45 285,12" fill="#ffffff" opacity="0.35"/>
-
-            <polygon points="315,140 345,140 330,45" fill="url(#crystalFace)"/>
-            <polygon points="315,140 330,45 305,80" fill="url(#crystalFaceSide)" opacity="0.75"/>
-            <polygon points="330,45 300,45 285,12" fill="url(#crystalEdge)" opacity="0.5"/>
-
-            <polygon points="365,140 395,140 380,20 350,70" fill="url(#crystalFace)"/>
-            <polygon points="365,140 350,70 380,20" fill="url(#crystalFaceSide)" opacity="0.85"/>
-            <polygon points="380,20 395,140 388,140" fill="#5a6a8a" opacity="0.4"/>
-            <polygon points="380,20 350,70 330,45" fill="url(#crystalEdge)" opacity="0.55"/>
-            <polygon points="380,20 367,45 392,48 380,20" fill="#ffffff" opacity="0.35"/>
-
-            <line x1="75" y1="15" x2="75" y2="140" stroke="#ffffff" stroke-width="0.6" opacity="0.6"/>
-            <line x1="180" y1="8" x2="180" y2="140" stroke="#ffffff" stroke-width="0.6" opacity="0.6"/>
-            <line x1="285" y1="12" x2="285" y2="140" stroke="#ffffff" stroke-width="0.6" opacity="0.6"/>
-            <line x1="380" y1="20" x2="380" y2="140" stroke="#ffffff" stroke-width="0.6" opacity="0.6"/>
-          </svg>
+      <div class="price-card platinum empty">
+        <h3 class="price-name-pixel">website</h3>
+        <div class="price-lines">
+          <div>E-commerce</div>
+          <div>Landing Pages</div>
+          <div>Multi-page</div>
+          <div>System Integrations</div>
         </div>
-        <span class="crystal-shimmer"></span>
-        <span class="price-eyebrow">Website</span>
-        <h3 class="price-name">Crystal</h3>
-        <span class="price-divider"></span>
-        <span class="price-start">Starts at</span>
-        <span class="price-value">R750</span>
-        <a href="#contact" class="price-cta">Scope</a>
+      </div>
+
+      <div class="price-card empty">
+        <h3 class="price-name-gothic">Wey Pro Package</h3>
+        <div class="price-lines">
+          <div>Website and Branding</div>
+        </div>
       </div>
 
     </div>
@@ -1901,10 +1882,10 @@
   <h2 class="cta-title">Ready to get marked?</h2>
   <p class="cta-desc">Tell us what you're building. We'll reply with next steps, timeline and a straight quote, no discovery-call runaround.</p>
   <div class="hero-ctas" style="justify-content:center;">
-    <a href="mailto:jordan@weybranding.co.za" class="btn solid">Start a project</a>
-    <a href="mailto:jordan@weybranding.co.za" class="btn ghost">Email us</a>
+    <a href="mailto:hello@weybrand.co.za" class="btn solid">Start a project</a>
+    <a href="mailto:hello@weybrand.co.za" class="btn ghost">Email us</a>
   </div>
-  <a href="mailto:jordan@weybranding.co.za" class="cta-email">jordan@weybranding.co.za</a>
+  <a href="mailto:hello@weybrand.co.za" class="cta-email">hello@weybrand.co.za</a>
 </section>
 
 <footer>
@@ -1920,12 +1901,12 @@
           <a href="#services">Services</a>
           <a href="work.html" target="_blank" rel="noopener">Work</a>
           <a href="#process">Process</a>
-          <a href="#pricing">Pricing</a>
+          <a href="#pricing">Services</a>
         </div>
         <div class="footer-col">
           <div class="footer-col-title">Contact</div>
-          <a href="mailto:jordan@weybranding.co.za">jordan@weybranding.co.za</a>
-          <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
+          <a href="mailto:hello@weybrand.co.za">hello@weybrand.co.za</a>
+          <a href="https://instagram.com/weybrandza" target="_blank" rel="noopener">Instagram</a>
           <a href="https://twitter.com/weybranding" target="_blank" rel="noopener">Twitter</a>
         </div>
       </div>
