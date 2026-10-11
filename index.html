@@ -909,10 +909,10 @@ window.addEventListener('DOMContentLoaded', () => {
     modelCamera.position.set(0, 0, 5.5);
 
     const environmentCanvas = document.createElement('canvas');
-    environmentCanvas.width = 1024;
-    environmentCanvas.height = 512;
+    environmentCanvas.width = mobileHero ? 512 : 1024;
+    environmentCanvas.height = environmentCanvas.width / 2;
     const environmentContext = environmentCanvas.getContext('2d');
-    const studioGradient = environmentContext.createLinearGradient(0, 0, 1024, 0);
+    const studioGradient = environmentContext.createLinearGradient(0, 0, environmentCanvas.width, 0);
     studioGradient.addColorStop(0, '#141820');
     studioGradient.addColorStop(0.16, '#c5ccd6');
     studioGradient.addColorStop(0.22, '#f7f8fa');
@@ -924,13 +924,13 @@ window.addEventListener('DOMContentLoaded', () => {
     studioGradient.addColorStop(0.88, '#464d58');
     studioGradient.addColorStop(1, '#141820');
     environmentContext.fillStyle = studioGradient;
-    environmentContext.fillRect(0, 0, 1024, 512);
+    environmentContext.fillRect(0, 0, environmentCanvas.width, environmentCanvas.height);
     const verticalLight = environmentContext.createLinearGradient(0, 0, 0, 512);
     verticalLight.addColorStop(0, 'rgba(15, 19, 26, 0.45)');
     verticalLight.addColorStop(0.48, 'rgba(255, 255, 255, 0.08)');
     verticalLight.addColorStop(1, 'rgba(8, 11, 16, 0.55)');
     environmentContext.fillStyle = verticalLight;
-    environmentContext.fillRect(0, 0, 1024, 512);
+    environmentContext.fillRect(0, 0, environmentCanvas.width, environmentCanvas.height);
     const studioEnvironment = new THREE.CanvasTexture(environmentCanvas);
     studioEnvironment.mapping = THREE.EquirectangularReflectionMapping;
     studioEnvironment.encoding = THREE.sRGBEncoding;
@@ -987,6 +987,7 @@ window.addEventListener('DOMContentLoaded', () => {
           if (material.metalness === undefined) return;
           material.metalness = 1;
           material.roughness = 0.12;
+          if (mobileHero && material.clearcoat !== undefined) material.clearcoat = 0;
           material.needsUpdate = true;
         });
       });
