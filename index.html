@@ -805,11 +805,10 @@ window.addEventListener('DOMContentLoaded', () => {
       letter.style.minWidth = '';
       letter.style.maxWidth = '';
     });
-    // Force layout reflow
-    void document.body.offsetHeight;
-    // 2. Freeze layout with minWidth, maxWidth, and width in pixels so other letters NEVER budge
-    letters.forEach(letter => {
-      const w = letter.offsetWidth;
+    // Read dimensions together before writing styles, avoiding a reflow per letter.
+    const widths = Array.from(letters, letter => letter.offsetWidth);
+    letters.forEach((letter, index) => {
+      const w = widths[index];
       if (w > 0) {
         const px = w + 'px';
         letter.style.width = px;
