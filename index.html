@@ -1107,6 +1107,8 @@ window.addEventListener('DOMContentLoaded', () => {
     heroIntroFinished = true;
     revealHeroModelWhenReady();
   }, [], 3.36);
+  // Keep the complete entrance on phones, with a shorter wait before interaction.
+  if (mobileHero) tl.timeScale(1.8);
 
   // =========================================================
   // FONT SCRAMBLER ENGINE (HOVER & PERIODIC AUTO)
