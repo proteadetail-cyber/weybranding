@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10291e">
+  <meta name="description" content="WEY website design and development, featuring Ubunye alongside selected branding and design projects.">
+  <title>Projects — WEY Branding</title>
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <script>
+    document.documentElement.classList.add('has-motion');
+    if (new URLSearchParams(location.search).has('weyEnter')) document.documentElement.classList.add('wey-entering');
+  </script>
+  <style>
+    :root{
+      color-scheme:dark;
+      --forest:#10291e;
+      --forest-deep:#081b13;
+      --forest-mid:#193c2a;
+      --fern:#60794d;
+      --fern-light:#91a66d;
+      --moss:#b5a56e;
+      --cream:#f1eddf;
+      --mist:#c3c9b9;
+      --line:rgba(226,226,194,.25);
+      --display:'Archivo Black','Space Grotesk',sans-serif;
+      --body:'Space Grotesk',sans-serif;
+      --mono:'JetBrains Mono',monospace;
+      --gutter:clamp(22px,5vw,76px);
+    }
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:96px}
+    body{margin:0;background:var(--forest-deep);color:var(--cream);font-family:var(--body);overflow-x:hidden}
+    body::selection{background:var(--moss);color:var(--forest-deep)}
+    a{color:inherit;text-decoration:none}
+    button,a{-webkit-tap-highlight-color:transparent}
+    :focus-visible{outline:2px solid var(--moss);outline-offset:5px}
+    .skip-link{position:fixed;z-index:10003;top:-60px;left:12px;padding:12px 16px;background:var(--cream);color:var(--forest-deep);font:11px/1 var(--mono);transition:top .2s}
+    .skip-link:focus{top:12px}
+    img{display:block;max-width:100%}
+    .page-progress{position:fixed;z-index:9996;inset:0 0 auto;height:2px;background:rgba(241,237,223,.12);pointer-events:none}
+    .page-progress span{display:block;width:100%;height:100%;background:var(--moss);transform:scaleX(var(--scroll-progress,0));transform-origin:left center}
+    .grain{position:fixed;inset:0;z-index:20;pointer-events:none;opacity:.08;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.24'/%3E%3C/svg%3E");mix-blend-mode:soft-light}
+    .return-control{position:fixed;z-index:9998;top:max(22px,env(safe-area-inset-top));left:50%;display:flex;align-items:center;gap:12px;padding:10px 15px 10px 11px;border:1px solid rgba(241,237,223,.32);border-left:2px solid var(--moss);border-radius:2px;background:rgba(8,27,19,.79);color:var(--cream);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);font:600 10px/1 var(--mono);letter-spacing:.15em;text-transform:uppercase;cursor:pointer;transform:translateX(-50%);transition:background .25s,border-color .25s,transform .25s}
+    .return-control:hover{background:rgba(16,41,30,.96);border-color:var(--moss);transform:translate(-50%,-2px)}
+    .return-control,.return-control:hover,.return-control:focus,.return-control:focus-visible{border:0;outline:none;box-shadow:none;background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none}
+    .return-control:hover,.return-control:focus-visible{color:var(--fern-light)}
+    .return-mark{display:flex;align-items:center;gap:3px;height:22px}
+    .return-mark i{display:block;width:3px;background:var(--cream);transform:scaleY(.62);transition:transform .28s,background .28s}
+    .return-mark i:nth-child(1),.return-mark i:nth-child(9){height:21px}
+    .return-mark i:nth-child(2),.return-mark i:nth-child(8){height:19px}
+    .return-mark i:nth-child(3),.return-mark i:nth-child(7){height:17px}
+    .return-mark i:nth-child(4),.return-mark i:nth-child(6){height:15px}
+    .return-mark i:nth-child(5){height:14px}
+    .return-control:hover .return-mark i,.return-control:focus-visible .return-mark i{transform:scaleY(1);background:var(--fern-light)}
+    .return-curtain{position:fixed;inset:0;z-index:9999;display:grid;grid-template-columns:repeat(9,1fr);pointer-events:none}
+    .return-curtain span{background:var(--forest-deep);transform:scaleY(0);transform-origin:top;transition:transform .58s cubic-bezier(.76,0,.24,1)}
+    .return-curtain span:nth-child(even){transform-origin:bottom}
+    .return-curtain.is-closing span{transform:scaleY(1)}
+    .return-curtain span:nth-child(1),.return-curtain span:nth-child(9){transition-delay:0ms}
+    .return-curtain span:nth-child(2),.return-curtain span:nth-child(8){transition-delay:35ms}
+    .return-curtain span:nth-child(3),.return-curtain span:nth-child(7){transition-delay:70ms}
+    .return-curtain span:nth-child(4),.return-curtain span:nth-child(6){transition-delay:105ms}
+    .return-curtain span:nth-child(5){transition-delay:140ms}
+    .entry-curtain{position:fixed;inset:0;z-index:10004;display:grid;grid-template-columns:repeat(9,1fr);pointer-events:none}
+    .entry-curtain span{position:relative;background:#0a2117;transform:scaleY(0);transform-origin:top;transition:transform .68s cubic-bezier(.76,0,.24,1)}
+    .entry-curtain span:nth-child(even){transform-origin:bottom;background:#10291e}
+    .entry-curtain span::after{content:"";position:absolute;top:0;right:0;bottom:0;width:1px;background:rgba(181,165,110,.28)}
+    html.wey-entering .entry-curtain span{transform:scaleY(1)}
+    html.wey-entry-opening .entry-curtain span{transform:scaleY(0)}
+    .entry-curtain span:nth-child(5){transition-delay:0ms}
+    .entry-curtain span:nth-child(4),.entry-curtain span:nth-child(6){transition-delay:40ms}
+    .entry-curtain span:nth-child(3),.entry-curtain span:nth-child(7){transition-delay:80ms}
+    .entry-curtain span:nth-child(2),.entry-curtain span:nth-child(8){transition-delay:120ms}
+    .entry-curtain span:nth-child(1),.entry-curtain span:nth-child(9){transition-delay:160ms}
+
+    .hero{position:relative;isolation:isolate;display:flex;min-height:min(920px,100svh);align-items:center;overflow:hidden;padding:155px var(--gutter) 78px}
+    .hero::before,.hero::after{content:"";position:absolute;z-index:-1;inset:0;pointer-events:none}
+    .hero::before{background:linear-gradient(90deg,rgba(6,22,15,.88) 0%,rgba(7,25,17,.70) 39%,rgba(8,27,19,.37) 75%,rgba(8,27,19,.56) 100%),linear-gradient(0deg,var(--forest-deep) 0%,transparent 40%)}
+    .hero::after{background:radial-gradient(ellipse at 75% 35%,rgba(174,155,89,.15),transparent 48%);mix-blend-mode:screen}
+    .hero-canopy{position:absolute;z-index:-2;inset:-3%;width:106%;height:106%;object-fit:cover;object-position:center 52%;animation:canopy-drift 38s ease-in-out infinite alternate;will-change:transform}
+    .hero-inner{position:relative;z-index:2;display:grid;width:min(1440px,100%);grid-template-columns:minmax(0,1fr) minmax(360px,.94fr);align-items:center;gap:clamp(44px,8vw,128px);margin:0 auto}
+    .hero-copy{max-width:650px;padding:20px 0 42px}
+    .eyebrow,.section-kicker{display:flex;align-items:center;gap:12px;color:var(--moss);font:10px/1.4 var(--mono);letter-spacing:.19em;text-transform:uppercase}
+    .eyebrow::before,.section-kicker::before{content:"";width:28px;height:1px;background:currentColor}
+    .hero h1{margin:24px 0 0;font:clamp(68px,8.5vw,104px)/.92 var(--display);letter-spacing:-.075em;text-transform:uppercase;white-space:nowrap}
+    .hero h1 span{display:block;overflow:hidden;padding:.04em .06em .08em 0}
+    .hero h1 span b{display:block;font:inherit;letter-spacing:inherit;animation:title-emerge 1.1s cubic-bezier(.2,.8,.2,1) both}
+    .hero h1 span:nth-child(2) b{animation-delay:.12s}
+    .hero-subtitle{max-width:505px;margin:28px 0 0;color:var(--cream);font:clamp(20px,2vw,28px)/1.3 var(--body);font-weight:500;letter-spacing:-.04em}
+    .hero-description{max-width:440px;margin:18px 0 0;color:var(--mist);font-size:15px;line-height:1.7}
+    .hero-actions{display:flex;align-items:center;gap:27px;flex-wrap:wrap;margin-top:32px}
+    .hero-index{color:rgba(241,237,223,.76);font:9px/1.6 var(--mono);letter-spacing:.1em;text-transform:uppercase}
+    .feature-wrap{position:relative;padding:16px 16px 17px;border:1px solid rgba(216,203,146,.48);background:rgba(8,27,19,.36);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);box-shadow:0 28px 90px rgba(0,0,0,.27);transform:rotate(1.3deg);transition:transform .5s cubic-bezier(.2,.8,.2,1),border-color .4s}
+    .feature-wrap:hover{transform:rotate(0) translateY(-7px);border-color:rgba(232,221,173,.84)}
+    .feature-image{position:relative;display:block;overflow:hidden;aspect-ratio:1.18;background:var(--forest-mid)}
+    .feature-image::after{content:"";position:absolute;inset:42% 0 0;background:linear-gradient(0deg,rgba(8,27,19,.74),transparent)}
+    .feature-image img{width:100%;height:100%;object-fit:cover;transition:transform 1.1s cubic-bezier(.2,.8,.2,1)}
+    .feature-wrap:hover .feature-image img{transform:scale(1.055)}
+    .feature-index{position:absolute;top:18px;left:18px;z-index:1;color:var(--cream);font:9px/1 var(--mono);letter-spacing:.15em;text-shadow:0 1px 10px rgba(0,0,0,.7)}
+    .feature-image-title{position:absolute;z-index:1;right:20px;bottom:17px;left:20px;display:flex;align-items:end;justify-content:space-between;gap:12px}
+    .feature-image-title strong{font:clamp(17px,2vw,24px)/1 var(--display);letter-spacing:-.03em}
+    .feature-image-title span{color:var(--cream);font:9px/1.4 var(--mono);letter-spacing:.12em;text-align:right}
+    .hero-bottom{position:absolute;z-index:2;right:var(--gutter);bottom:32px;left:var(--gutter);display:flex;align-items:center;justify-content:space-between;max-width:1440px;margin:auto;color:rgba(241,237,223,.7);font:9px/1 var(--mono);letter-spacing:.15em;text-transform:uppercase}
+    .scroll-cue{display:flex;align-items:center;gap:12px}
+    .scroll-cue i{display:block;width:36px;height:1px;background:var(--moss);animation:cue-pulse 1.8s ease-in-out infinite}
+    .hero-coordinate{color:var(--moss)}
+
+    .projects-section{position:relative;isolation:isolate;overflow:hidden;padding:clamp(112px,14vw,190px) var(--gutter) clamp(120px,15vw,190px);background:radial-gradient(ellipse at 12% 55%,rgba(56,83,49,.28),transparent 35%),linear-gradient(140deg,#10291e,#0b2117 55%,#132e20)}
+    .projects-section::before{content:"";position:absolute;z-index:-1;inset:0;background-image:linear-gradient(rgba(8,27,19,.74),rgba(8,27,19,.90)),url("assets/rainforest-canopy.webp");background-size:cover;background-position:center 60%;opacity:.52}
+    .section-shell{position:relative;z-index:1;width:min(1440px,100%);margin:0 auto}
+    .section-heading{display:flex;align-items:end;justify-content:space-between;gap:38px;margin-bottom:48px}
+    .section-title{margin:20px 0 0;font:clamp(44px,7vw,92px)/.94 var(--display);letter-spacing:-.07em;text-transform:uppercase}
+    .section-intro{max-width:350px;margin:0 0 4px;color:var(--mist);font-size:14px;line-height:1.7}
+    .project-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:18px}
+    .project-card{--enter-delay:0ms;position:relative;grid-column:span 4;min-width:0;padding:12px 12px 17px;overflow:hidden;border:1px solid rgba(190,191,150,.25);background:rgba(12,38,26,.87);box-shadow:0 18px 55px rgba(0,0,0,.15);transition:transform .42s cubic-bezier(.2,.8,.2,1),border-color .35s,box-shadow .4s,background .35s}
+    .project-card:nth-child(1){grid-column:span 7}
+    .project-card:nth-child(2){grid-column:span 5}
+    .project-card:nth-child(n+3){grid-column:span 4}
+    .project-card:hover,.project-card:focus-visible{z-index:2;transform:translateY(-7px);border-color:rgba(205,191,128,.78);background:rgba(20,53,35,.96);box-shadow:0 26px 65px rgba(0,0,0,.30),0 0 38px rgba(117,138,78,.10)}
+    .project-visual{position:relative;display:grid;place-items:center;aspect-ratio:1.18;overflow:hidden;background:linear-gradient(145deg,#27432c,#10291e 62%,#1d3020)}
+    .project-visual::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(0deg,rgba(7,23,16,.25),transparent 50%);pointer-events:none}
+    .project-visual img{width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.2,.8,.2,1),filter .6s}
+    .project-card:hover .project-visual img,.project-card:focus-visible .project-visual img{transform:scale(1.055);filter:saturate(1.08)}
+    .project-visual--contain img{width:78%;height:78%;object-fit:contain;mix-blend-mode:screen}
+    .project-card:nth-child(1) .project-visual{aspect-ratio:1.52}
+    .project-card:nth-child(2) .project-visual{aspect-ratio:1.18}
+    .project-card:nth-child(3) .project-visual img{object-position:center 42%}
+    .project-card:nth-child(5) .project-visual img{mix-blend-mode:screen;object-fit:contain;width:78%;height:78%}
+    .project-no{position:absolute;z-index:2;top:18px;left:18px;color:var(--cream);font:9px/1 var(--mono);letter-spacing:.14em;text-shadow:0 2px 8px rgba(0,0,0,.65)}
+    .project-info{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:14px;padding:18px 7px 1px}
+    .project-category{margin:0 0 9px;color:var(--moss);font:9px/1.4 var(--mono);letter-spacing:.13em;text-transform:uppercase}
+    .project-name{margin:0;font:clamp(19px,2.1vw,29px)/1 var(--display);letter-spacing:-.04em;text-transform:uppercase}
+    .project-kind{max-width:125px;color:var(--mist);font:9px/1.55 var(--mono);letter-spacing:.04em;text-align:right;text-transform:uppercase}
+    .project-card:nth-child(3) .project-name,.project-card:nth-child(4) .project-name,.project-card:nth-child(5) .project-name{font-size:clamp(17px,1.65vw,23px)}
+
+    .closing-section{position:relative;isolation:isolate;overflow:hidden;padding:clamp(88px,11vw,146px) var(--gutter);background:linear-gradient(118deg,#173622,#10291e 50%,#0b2117)}
+    .closing-section::before{content:"";position:absolute;z-index:-1;inset:0;background:linear-gradient(90deg,rgba(8,27,19,.95),rgba(8,27,19,.66)),url("assets/rainforest-canopy.webp") center 72%/cover;opacity:.82}
+    .closing-inner{position:relative;z-index:1;display:flex;width:min(1440px,100%);align-items:end;justify-content:space-between;gap:40px;margin:0 auto}
+    .closing-title{max-width:810px;margin:20px 0 0;font:clamp(46px,7.7vw,104px)/.91 var(--display);letter-spacing:-.07em;text-transform:uppercase}
+    .closing-link{display:inline-flex;flex:none;align-items:center;gap:22px;padding:18px 0;border-bottom:1px solid rgba(215,200,139,.65);color:var(--cream);font:10px/1 var(--mono);letter-spacing:.15em;text-transform:uppercase;transition:gap .28s,color .28s}
+    .closing-link:hover{gap:32px;color:#dac991}
+    .site-footer{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:24px var(--gutter) 30px;border-top:1px solid rgba(226,226,194,.21);background:#091b13;color:var(--mist);font:9px/1.5 var(--mono);letter-spacing:.12em;text-transform:uppercase}
+    .site-footer span:last-child{color:var(--moss)}
+
+    .vine{position:absolute;z-index:3;top:0;width:clamp(74px,11vw,155px);height:clamp(370px,55vw,650px);overflow:visible;pointer-events:none;transform-origin:top center;animation:vine-sway 8.5s ease-in-out infinite alternate}
+    .vine--left{left:-16px}
+    .vine--right{right:-10px;transform:scaleX(-1);animation-delay:-4s}
+    .vine path{stroke:rgba(151,171,109,.76);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;fill:none}
+    .vine .leaf{fill:rgba(150,170,108,.82);stroke:rgba(195,193,132,.38);stroke-width:.7}
+    .vine .vein{stroke:rgba(223,211,158,.55);stroke-width:.65}
+    .vine .dew{fill:rgba(223,208,144,.8);stroke:none}
+    .hero-vines{position:absolute;inset:0;z-index:1;overflow:hidden;pointer-events:none}
+    .section-vines{top:0;right:auto;left:0;height:100%;opacity:.62}
+    .section-vines.vine--right{right:0;left:auto}
+    .hero .vine{height:min(590px,66vh)}
+
+    .reveal{opacity:1;transform:none}
+    .has-motion .reveal{opacity:0;transform:translateY(24px);transition:opacity .75s ease,transform .85s cubic-bezier(.2,.8,.2,1);transition-delay:var(--enter-delay,0ms)}
+    .has-motion .reveal.is-visible{opacity:1;transform:translateY(0)}
+    .hero-copy .eyebrow{animation:soft-in .75s .18s both}
+    .hero-subtitle,.hero-description,.hero-actions{animation:soft-in .75s .42s both}
+    .feature-wrap{animation:feature-arrive .95s .35s cubic-bezier(.2,.8,.2,1) both}
+    .return-curtain.is-closing{pointer-events:all}
+    @keyframes canopy-drift{from{transform:scale(1.02) translate3d(-.4%,0,0)}to{transform:scale(1.085) translate3d(.5%,1%,0)}}
+    @keyframes title-emerge{from{transform:translateY(115%);clip-path:inset(0 0 100% 0)}to{transform:translateY(0);clip-path:inset(0 0 0 0)}}
+    @keyframes soft-in{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes feature-arrive{from{opacity:0;transform:translateY(35px) rotate(3deg)}to{opacity:1;transform:translateY(0) rotate(1.3deg)}}
+    @keyframes vine-sway{from{rotate:-1.6deg}to{rotate:1.3deg}}
+    @keyframes cue-pulse{0%,100%{opacity:.45;transform:scaleX(.72);transform-origin:left}50%{opacity:1;transform:scaleX(1);transform-origin:left}}
+
+    @media(max-width:950px){
+      .hero{min-height:870px;padding-top:160px;padding-bottom:105px}
+      .hero-inner{grid-template-columns:minmax(0,1.05fr) minmax(300px,.82fr);gap:38px}
+      .hero h1{font-size:clamp(62px,8vw,76px)}
+      .project-card:nth-child(1){grid-column:span 7}
+      .project-card:nth-child(2){grid-column:span 5}
+      .project-card:nth-child(n+3){grid-column:span 6}
+    }
+    @media(max-width:680px){
+      :root{--gutter:22px}
+      html{scroll-padding-top:76px}
+      .return-control{top:max(16px,env(safe-area-inset-top));gap:9px;padding:9px 10px;font-size:9px}
+      .return-mark{gap:2px}
+      .return-mark i{width:2px}
+      .hero{min-height:920px;min-height:max(820px,100svh);align-items:flex-start;padding:157px 22px 80px}
+      .hero::before{background:linear-gradient(90deg,rgba(6,22,15,.86),rgba(7,25,17,.50)),linear-gradient(0deg,var(--forest-deep),transparent 55%)}
+      .hero-inner{grid-template-columns:1fr;gap:36px}
+      .hero-copy{padding:20px 0 0}
+      .hero h1{font-size:clamp(44px,14.6vw,92px)}
+      .hero-subtitle{max-width:380px;margin-top:20px;font-size:21px}
+      .hero-description{max-width:390px;margin-top:14px;font-size:14px}
+      .hero-actions{gap:18px;margin-top:23px}
+      .hero-index{font-size:8px}
+      .feature-wrap{width:min(100%,490px);margin:0 0 0 auto;padding:10px}
+      .feature-image{aspect-ratio:1.38}
+      .hero-bottom{bottom:23px;font-size:8px}
+      .hero-coordinate{display:none}
+      .vine--left{left:-26px}
+      .vine--right{right:-22px}
+      .hero .vine{height:420px;opacity:.8}
+      .projects-section{padding:104px 22px 112px}
+      .section-heading{display:block;margin-bottom:30px}
+      .section-title{font-size:clamp(45px,12vw,70px)}
+      .section-intro{margin-top:18px;max-width:420px;font-size:13px}
+      .project-grid{grid-template-columns:1fr;gap:13px}
+      .project-card:nth-child(n){grid-column:1; padding:9px 9px 14px}
+      .project-card:nth-child(1) .project-visual,.project-card:nth-child(2) .project-visual,.project-visual{aspect-ratio:1.25}
+      .project-info{padding:15px 6px 1px}
+      .project-name,.project-card:nth-child(n+3) .project-name{font-size:21px}
+      .project-category,.project-kind{font-size:8px}
+      .closing-section{padding:90px 22px 98px}
+      .closing-inner{display:block}
+      .closing-title{font-size:clamp(43px,12vw,72px)}
+      .closing-link{margin-top:34px;font-size:9px}
+      .site-footer{align-items:flex-start;flex-direction:column;padding:20px 22px 24px;font-size:8px}
+      .section-vines{opacity:.43}
+    }
+    @media(prefers-reduced-motion:reduce){
+      *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;transition-delay:0ms!important}
+      .has-motion .reveal{opacity:1;transform:none}
+    }
+  </style>
+<script src="../wey-pillar-page.js"></script>
+<link rel="stylesheet" href="../pillar-pages/website-work.css">
+</head>
+<body>
+  <div class="entry-curtain" id="entryCurtain" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div class="page-progress" aria-hidden="true"><span></span></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <button class="return-control" type="button" aria-label="Return to the accordion">
+    <span class="return-mark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+    <span>Return</span>
+  </button>
+  <div class="return-curtain" id="returnCurtain" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+
+  <main id="main-content">
+    <section class="hero" id="top" aria-labelledby="page-title">
+      <img class="hero-canopy" src="assets/rainforest-canopy.webp" alt="" fetchpriority="high" decoding="async">
+      <div class="hero-vines" aria-hidden="true">
+        <svg class="vine vine--left" viewBox="0 0 150 590" preserveAspectRatio="none">
+          <path d="M28 -12C95 77 18 134 63 221S28 342 87 430s-12 104 36 171"/><path d="M51 169C16 168 4 190-1 213"/><path d="M84 356c34-9 49 6 65 30"/>
+          <path class="leaf" d="M52 62C20 47 16 29 20 18c26 3 42 19 32 44Z"/><path class="vein" d="m52 62-30-39"/>
+          <path class="leaf" d="M51 92c32-24 50-15 57-6-9 25-31 34-57 6Z"/><path class="vein" d="m51 92 48-8"/>
+          <path class="leaf" d="M41 160C10 147 7 130 10 119c26 1 43 18 31 41Z"/><path class="vein" d="m41 160-27-34"/>
+          <path class="leaf" d="M53 190c29-27 48-20 56-12-7 25-27 37-56 12Z"/><path class="vein" d="m53 190 48-15"/>
+          <path class="leaf" d="M73 271c-34-9-41-26-39-38 26-4 46 9 39 38Z"/><path class="vein" d="m73 271-35-31"/>
+          <path class="leaf" d="M66 402c31-22 49-11 55-2-11 24-32 31-55 2Z"/><path class="vein" d="m66 402 48-5"/>
+          <path class="leaf" d="M95 493c-30-14-33-33-28-43 25 2 42 20 28 43Z"/><path class="vein" d="m95 493-23-38"/>
+          <circle class="dew" cx="65" cy="232" r="2"/><circle class="dew" cx="48" cy="330" r="1.5"/>
+        </svg>
+        <svg class="vine vine--right" viewBox="0 0 150 590" preserveAspectRatio="none">
+          <path d="M28 -12C95 77 18 134 63 221S28 342 87 430s-12 104 36 171"/><path d="M51 169C16 168 4 190-1 213"/><path d="M84 356c34-9 49 6 65 30"/>
+          <path class="leaf" d="M52 62C20 47 16 29 20 18c26 3 42 19 32 44Z"/><path class="vein" d="m52 62-30-39"/>
+          <path class="leaf" d="M51 92c32-24 50-15 57-6-9 25-31 34-57 6Z"/><path class="vein" d="m51 92 48-8"/>
+          <path class="leaf" d="M41 160C10 147 7 130 10 119c26 1 43 18 31 41Z"/><path class="vein" d="m41 160-27-34"/>
+          <path class="leaf" d="M53 190c29-27 48-20 56-12-7 25-27 37-56 12Z"/><path class="vein" d="m53 190 48-15"/>
+          <path class="leaf" d="M73 271c-34-9-41-26-39-38 26-4 46 9 39 38Z"/><path class="vein" d="m73 271-35-31"/>
+          <path class="leaf" d="M66 402c31-22 49-11 55-2-11 24-32 31-55 2Z"/><path class="vein" d="m66 402 48-5"/>
+          <path class="leaf" d="M95 493c-30-14-33-33-28-43 25 2 42 20 28 43Z"/><path class="vein" d="m95 493-23-38"/>
+          <circle class="dew" cx="65" cy="232" r="2"/><circle class="dew" cx="48" cy="330" r="1.5"/>
+        </svg>
+      </div>
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <h1 id="page-title"><span><b>Projects</b></span></h1>
+          <p class="hero-subtitle">Exceptional websites start with a clear idea.</p>
+          <p class="hero-description">We design and build distinctive websites. Explore our website work, starting with Ubunye, alongside selected brand identities and design concepts.</p>
+          <div class="hero-actions">
+            <span class="hero-index">Six selected projects<br>South Africa · 2024—26</span>
+          </div>
+        </div>
+        <a class="feature-wrap ubunye-feature" href="https://ubunye.weybrand.co.za/" aria-label="Visit Ubunye — website by WEY"><span class="feature-image"><div class="ubunye-plate"><span class="ubunye-domain">ubunye.weybrand.co.za</span><strong>Ubunye</strong><span class="ubunye-credit">WEBSITE DESIGN & DEVELOPMENT / WEY</span></div><span class="feature-index">01 / FEATURED WEBSITE</span></span></a>
+      </div>
+      <div class="hero-bottom"><span class="scroll-cue"><i></i> Scroll to explore</span><span class="hero-coordinate">24° 46′ S &nbsp; / &nbsp; FIELD NOTES 01</span></div>
+    </section>
+
+    <section class="projects-section" id="field-guide" aria-labelledby="projects-heading">
+      <svg class="vine vine--left section-vines" viewBox="0 0 150 900" preserveAspectRatio="none" aria-hidden="true"><path d="M18-12c74 107-20 188 37 291s-7 183 49 295-4 202 48 338"/><path class="leaf" d="M42 81C13 63 15 45 20 36c23 5 36 22 22 45Z"/><path class="leaf" d="M45 112c27-23 44-15 49-7-9 22-28 30-49 7Z"/><path class="leaf" d="M46 271c-31-8-37-24-35-34 24-4 41 8 35 34Z"/><path class="leaf" d="M89 507c30-21 46-11 52-3-11 22-30 29-52 3Z"/><path class="leaf" d="M89 705c-31-11-35-28-31-38 24 1 40 17 31 38Z"/></svg>
+      <svg class="vine vine--right section-vines" viewBox="0 0 150 900" preserveAspectRatio="none" aria-hidden="true"><path d="M18-12c74 107-20 188 37 291s-7 183 49 295-4 202 48 338"/><path class="leaf" d="M42 81C13 63 15 45 20 36c23 5 36 22 22 45Z"/><path class="leaf" d="M45 112c27-23 44-15 49-7-9 22-28 30-49 7Z"/><path class="leaf" d="M46 271c-31-8-37-24-35-34 24-4 41 8 35 34Z"/><path class="leaf" d="M89 507c30-21 46-11 52-3-11 22-30 29-52 3Z"/><path class="leaf" d="M89 705c-31-11-35-28-31-38 24 1 40 17 31 38Z"/></svg>
+      <div class="section-shell">
+        <div class="section-heading reveal">
+          <div><p class="section-kicker">The canopy &nbsp; / &nbsp; Selected projects</p><h2 class="section-title" id="projects-heading">Work in bloom.</h2></div>
+          <p class="section-intro">Different seeds, distinct worlds. Every project starts with a point of view and grows into a system made to work in the real world.</p>
+        </div>
+        <div class="project-grid">
+          <a class="project-card reveal" href="https://ubunye.weybrand.co.za/" aria-label="Visit the Ubunye website"><span class="project-visual"><div class="ubunye-plate"><span class="ubunye-domain">ubunye.weybrand.co.za</span><strong>Ubunye</strong><span class="ubunye-credit">WEBSITE DESIGN & DEVELOPMENT / WEY</span></div><span class="project-no">01 / WEBSITE</span></span><span class="project-info"><span><span class="project-category">Website client</span><h3 class="project-name">Ubunye</h3></span><span class="project-kind">Website design<br>& development</span></span></a>
+          <a class="project-card reveal" style="--enter-delay:0ms" href="../work-vapefli.html" aria-label="View VapeFli branding and identity project">
+            <span class="project-visual"><img src="assets/vapefli.webp" alt="VapeFli brand artwork" loading="lazy" decoding="async"><span class="project-no">01 &nbsp; / &nbsp; BRAND WORLD</span></span>
+            <span class="project-info"><span><span class="project-category">Real project &nbsp; · &nbsp; 2026</span><h3 class="project-name">VapeFli</h3></span><span class="project-kind">Branding<br>& identity</span></span>
+          </a>
+          <a class="project-card reveal" style="--enter-delay:90ms" href="../work-balkanfouche.html" aria-label="View Balkan Fouche luxury fragrance concept">
+            <span class="project-visual"><img src="assets/balkan-fouche.webp" alt="Balkan Fouche fragrance identity" loading="lazy" decoding="async"><span class="project-no">02 &nbsp; / &nbsp; IDENTITY</span></span>
+            <span class="project-info"><span><span class="project-category">Concept &nbsp; · &nbsp; 2026</span><h3 class="project-name">Balkan Fouche</h3></span><span class="project-kind">Luxury<br>fragrance</span></span>
+          </a>
+          <a class="project-card reveal" style="--enter-delay:0ms" href="../work-oandi.html" aria-label="View Oak and Ivory interior design identity project">
+            <span class="project-visual"><img src="assets/oak-and-ivory.webp" alt="Oak and Ivory interior design identity" loading="lazy" decoding="async"><span class="project-no">03 &nbsp; / &nbsp; IDENTITY</span></span>
+            <span class="project-info"><span><span class="project-category">Concept &nbsp; · &nbsp; 2026</span><h3 class="project-name">Oak &amp; Ivory</h3></span><span class="project-kind">Interior<br>design</span></span>
+          </a>
+          <a class="project-card reveal" style="--enter-delay:90ms" href="../work-billies.html" aria-label="View Billie's coffee shop identity project">
+            <span class="project-visual project-visual--contain"><img src="assets/billies.webp" alt="Billie's coffee shop mascot and logo" loading="lazy" decoding="async"><span class="project-no">04 &nbsp; / &nbsp; HOSPITALITY</span></span>
+            <span class="project-info"><span><span class="project-category">Real project &nbsp; · &nbsp; 2024</span><h3 class="project-name">Billie’s</h3></span><span class="project-kind">Coffee shop<br>identity</span></span>
+          </a>
+          <a class="project-card reveal" style="--enter-delay:180ms" href="../work-beetlejuice.html" aria-label="View Beetle Juice online store identity project">
+            <span class="project-visual"><img src="assets/beetle-juice.webp" alt="Beetle Juice online store identity" loading="lazy" decoding="async"><span class="project-no">05 &nbsp; / &nbsp; DIGITAL</span></span>
+            <span class="project-info"><span><span class="project-category">Real project &nbsp; · &nbsp; 2024</span><h3 class="project-name">Beetle Juice</h3></span><span class="project-kind">Online store<br>identity</span></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing-section" id="approach" aria-labelledby="closing-title">
+      <svg class="vine vine--left section-vines" viewBox="0 0 150 620" preserveAspectRatio="none" aria-hidden="true"><path d="M18-12c74 107-20 188 37 291s-7 183 49 295"/><path class="leaf" d="M42 81C13 63 15 45 20 36c23 5 36 22 22 45Z"/><path class="leaf" d="M45 112c27-23 44-15 49-7-9 22-28 30-49 7Z"/><path class="leaf" d="M46 271c-31-8-37-24-35-34 24-4 41 8 35 34Z"/><path class="leaf" d="M89 507c30-21 46-11 52-3-11 22-30 29-52 3Z"/></svg>
+      <svg class="vine vine--right section-vines" viewBox="0 0 150 620" preserveAspectRatio="none" aria-hidden="true"><path d="M18-12c74 107-20 188 37 291s-7 183 49 295"/><path class="leaf" d="M42 81C13 63 15 45 20 36c23 5 36 22 22 45Z"/><path class="leaf" d="M45 112c27-23 44-15 49-7-9 22-28 30-49 7Z"/><path class="leaf" d="M46 271c-31-8-37-24-35-34 24-4 41 8 35 34Z"/><path class="leaf" d="M89 507c30-21 46-11 52-3-11 22-30 29-52 3Z"/></svg>
+      <div class="closing-inner reveal">
+        <div><p class="section-kicker">Plant a good idea</p><h2 class="closing-title" id="closing-title">Have something growing?</h2></div>
+        <a class="closing-link" id="contact" href="mailto:hello@weybrand.co.za?subject=Let%E2%80%99s%20grow%20a%20project">Let’s build it together <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><span>© 2026 WEY Branding</span><span>Made to take root &nbsp; · &nbsp; South Africa</span></footer>
+
+  <script>
+    (() => {
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const revealItems = document.querySelectorAll('.reveal');
+      if (!reducedMotion && 'IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries, currentObserver) => {
+          entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('is-visible');
+            currentObserver.unobserve(entry.target);
+          });
+        }, { threshold: 0.14, rootMargin: '0px 0px -7% 0px' });
+        revealItems.forEach(item => observer.observe(item));
+      } else {
+        document.documentElement.classList.remove('has-motion');
+        revealItems.forEach(item => item.classList.add('is-visible'));
+      }
+
+      let queued = false;
+      const updateProgress = () => {
+        if (queued) return;
+        queued = true;
+        requestAnimationFrame(() => {
+          const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+          document.documentElement.style.setProperty('--scroll-progress', scrollable > 0 ? String(window.scrollY / scrollable) : '0');
+          queued = false;
+        });
+      };
+      window.addEventListener('scroll', updateProgress, { passive: true });
+      updateProgress();
+
+      const returnButton = document.querySelector('.return-control');
+      const curtain = document.getElementById('returnCurtain');
+      const entryCurtain = document.getElementById('entryCurtain');
+      if (new URLSearchParams(location.search).has('weyEnter')) {
+        requestAnimationFrame(() => requestAnimationFrame(() => document.documentElement.classList.add('wey-entry-opening')));
+        window.setTimeout(() => {
+          document.documentElement.classList.remove('wey-entering', 'wey-entry-opening');
+          entryCurtain.remove();
+          const cleanUrl = new URL(window.location.href);
+          cleanUrl.searchParams.delete('weyEnter');
+          history.replaceState(null, '', cleanUrl.pathname + cleanUrl.hash);
+        }, reducedMotion ? 40 : 1150);
+      } else if (entryCurtain) {
+        entryCurtain.remove();
+      }
+      returnButton.addEventListener('click', () => {
+        returnButton.disabled = true;
+        curtain.classList.add('is-closing');
+        window.setTimeout(() => { window.location.href = '../../Wey_Branding.html?weyReturn=accordion'; }, reducedMotion ? 30 : 760);
+      });
+    })();
+  </script>
+</body>
+</html>

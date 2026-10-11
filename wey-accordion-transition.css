@@ -1,0 +1,30 @@
+.wey-entry-curtain {
+  position: fixed;
+  inset: 0;
+  z-index: 10004;
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  pointer-events: none;
+}
+.wey-entry-curtain span {
+  position: relative;
+  background: #09090a;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 680ms cubic-bezier(.76, 0, .24, 1);
+}
+.wey-entry-curtain span:nth-child(even) { transform-origin: bottom; }
+html.wey-accordion-entering .wey-entry-curtain span { transform: scaleY(1); }
+html.wey-accordion-opening .wey-entry-curtain span { transform: scaleY(0); }
+.wey-entry-curtain span:nth-child(5) { transition-delay: 0ms; }
+.wey-entry-curtain span:nth-child(4),
+.wey-entry-curtain span:nth-child(6) { transition-delay: 35ms; }
+.wey-entry-curtain span:nth-child(3),
+.wey-entry-curtain span:nth-child(7) { transition-delay: 70ms; }
+.wey-entry-curtain span:nth-child(2),
+.wey-entry-curtain span:nth-child(8) { transition-delay: 105ms; }
+.wey-entry-curtain span:nth-child(1),
+.wey-entry-curtain span:nth-child(9) { transition-delay: 140ms; }
+@media (prefers-reduced-motion: reduce) {
+  .wey-entry-curtain span { transition-duration: .01ms !important; transition-delay: 0ms !important; }
+}
