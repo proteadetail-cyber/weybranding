@@ -14,7 +14,7 @@
     if (embedded) {
       parent.postMessage({type:'wey-page-navigate',href:destination.href}, '*');
     } else {
-      const accordion = new URL('../../Wey_Branding.html', destination);
+      const accordion = new URL('/?weyReturn=accordion', destination);
       accordion.searchParams.set('weyReturn', 'accordion');
       accordion.searchParams.set('weyOpen', match[1].toUpperCase());
       location.href = accordion.href;

@@ -11,7 +11,7 @@
   new IntersectionObserver(entries => { document.body.classList.toggle('past-hero', !entries[0].isIntersecting); }, { threshold: .08 }).observe(hero);
   document.querySelector('.return-control').addEventListener('click', () => {
     if (embedded) parent.postMessage({type:'wey-page-return'}, '*');
-    else location.href = '../../Wey_Branding.html?weyReturn=accordion';
+    else location.href = '/?weyReturn=accordion';
   });
   document.querySelectorAll('[data-filter]').forEach(button => button.addEventListener('click', () => {
     document.querySelectorAll('[data-filter]').forEach(other => other.setAttribute('aria-pressed', String(other === button)));
