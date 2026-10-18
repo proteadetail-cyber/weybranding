@@ -3,7 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<script>if (new URLSearchParams(location.search).get('weyReturn') === 'accordion') document.documentElement.classList.add('direct-accordion-return');</script>
+<script>
+if (location.pathname === '/index.html') {
+  location.replace('/' + location.search + location.hash);
+}
+if (new URLSearchParams(location.search).get('weyReturn') === 'accordion') {
+  document.documentElement.classList.add('direct-accordion-return');
+}
+</script>
 <title>WEY | Website Design &amp; Development in South Africa</title>
 <meta name="description" content="WEY designs and builds distinctive websites with thoughtful animation and clear user journeys. Explore our work, services and website estimates.">
 <meta name="robots" content="index,follow,max-image-preview:large">
